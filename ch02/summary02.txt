@@ -1,0 +1,40 @@
+1. 모듈과 패키지
+모듈 - 프로젝트를 말한다. 패키지가 모여서 모듈을 이룬다. 프로젝트 파일이라 간주하면된다
+패키지 - 코드 모음단위. 원하는 작업을 수행하기위한 코드뭉치라 생각하면 쉽다.
+        보통 디렉토리가 하나의 패키지를 이룬다
+
+<일반적인 프로젝트 구성>
+
+    [project01]                         --> module
+    |-- go.mod                          (go mod init project01)
+    |-- main.go
+    |-- [abc디렉토리]                   --> package
+    |       |-- a.go (package abc)
+    |       |-- b.go (package abc)
+    |       |-- c.go (package abc)
+    |-- [xyz디렉토리]                   --> package
+            |-- x.go (package xyz)
+            |-- y.go (package xyz)
+
+go는 의존성관리를 위해 go.mod와 go.sum 파일을 사용
+
+go.mod 의존성을 정의 (go mod init <모듈명>으로 초기화해준다)
+
+go.sum 의존성패키지들의 체크섬정보를 포함(컴파일러가 자동으로 생성해줌)
+
+
+
+2. 외부 패키지를 내려받는 법
+
+    2.1 go get github.com/계정이름.../패키지명...@버전(@latest)
+    
+    2.2 go mod tidy (의존성 동기화 작업 - 자동으로 처리해준다)
+        - go.mod 파일에서 사용하지않는 패키지는 제거, 필요한 패키지는 자동으로 다운
+
+    2.3 소스에서 import (import "github/계정명/패키지명")
+
+3. 환경변수 등록 (GOROOT, GOPATH)
+    3.1 vi ~/.profile (or .bash_profile)에서
+    export GOROOT=/usr/local/go
+    export GOPATH=$HOME/go
+    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin

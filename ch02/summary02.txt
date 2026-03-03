@@ -34,7 +34,8 @@ go.sum 의존성패키지들의 체크섬정보를 포함(컴파일러가 자동
     2.3 소스에서 import (import "github/계정명/패키지명")
 
 3. 환경변수 등록 (GOROOT, GOPATH)
-    3.1 vi ~/.profile (or .bash_profile)에서
-    export GOROOT=/usr/local/go
-    export GOPATH=$HOME/go
+    3.1 vi ~/.profile (or .bash_profile) - .bash_profile이 있으면 .profile은 비활성
+
+    export GOROOT=/usr/bin/go   (go가 실제로 설치된 경로)
+    export GOPATH=$HOME/go      (작업공간으로 쓸 경로)
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
